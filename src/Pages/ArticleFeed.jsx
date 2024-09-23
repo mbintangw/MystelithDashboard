@@ -50,7 +50,7 @@ const ArticleFeeds = () => {
     <h1 className="text-3xl font-bold">Article Feed</h1>
     <Link
       to="/add"
-      className="bg-blue-500 text-white px-4 py-2 rounded-full text-center"
+      className="bg-Button text-white px-4 py-2 rounded-full text-center"
     >
       Add Article
     </Link>
@@ -60,7 +60,7 @@ const ArticleFeeds = () => {
     {articles.map((article) => (
       <div
         key={article.id}
-        className="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col"
+        className="bg-white rounded-lg shadow-xl shadow-black/50 overflow-hidden flex flex-col "
       >
         <div className="relative">
           <img
@@ -68,36 +68,36 @@ const ArticleFeeds = () => {
             alt={article.title}
             className="w-full h-[200px] object-cover"
           />
-          <div className="absolute top-2 right-2 flex space-x-2 text-white">
+          <div className="absolute top-2 right-2 flex space-x-2 text-white ">
             <Link
               to={`/edit/${article.id}`}
-              className="bg-black/50 backdrop-blur-2xl p-2 rounded-full shadow-md"
+              className="bg-black/50 backdrop-blur-2xl p-2 rounded-full shadow-md hover:scale-110"
             >
               <FaRegEdit />
             </Link>
             <button
               onClick={() => handleDelete(article.id, article.posterImage)}
-              className="bg-black/50 backdrop-blur-2xl p-2 rounded-full shadow-md"
+              className="bg-black/50 backdrop-blur-2xl p-2 rounded-full shadow-md hover:scale-110"
             >
               <MdOutlineDeleteForever />
             </button>
           </div>
         </div>
 
-        <div className="p-4 flex flex-col">
-          <p className="text-gray-500 text-sm mt-2 flex-grow">
+        <div className="p-4 flex flex-col space-y-2">
+          <p className="text-Paragraph text-sm mt-2 flex-grow">
             Written by <span className="font-medium">{article.author}</span> on{" "}
             <span className="">{article.date}</span>
           </p>
-          <h1 className="text-lg font-semibold text-blue-600">{article.title}</h1>
-          <div className="text-gray-700 text-sm mt-2 line-clamp-2">
+          <h1 className="text-lg font-semibold text-Highlight uppercase">{article.title}</h1>
+          <div className="text-Paragraph text-sm mt-2 line-clamp-2">
                 {stripHtml(article.content)}
           </div>
         </div>
 
         <Link
             to={`/detail/${article.id}`}
-            className="mt-4 inline-block bg-red-500 text-white px-4 py-2 rounded-tl-full self-end"
+            className="mt-4 inline-block bg-Tertiary text-white px-4 py-2 rounded-tl-full self-end"
           >
             Read more
           </Link>
@@ -110,8 +110,3 @@ const ArticleFeeds = () => {
 };
 
 export default ArticleFeeds;
-
-
-// <div className="w-full h-[200px] object-cover overflow-hidden rounded-t-lg">
-// <img src={article.posterImage} alt={article.title} className='w-full h-[200px] object-cover overflow-hidden rounded-t-lg' />
-// </div>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <nav className='bg-red-400 flex flex-col w-[250px] h-screen gap-20 items-center'>
+    <nav className='bg-Headline text-Main flex flex-col w-[250px] h-screen gap-20 items-center'>
       <div>
         <h1>Mystelith</h1>
       </div>
