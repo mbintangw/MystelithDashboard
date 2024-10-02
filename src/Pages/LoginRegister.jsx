@@ -1,14 +1,13 @@
 import React from 'react'
 import Login from '../Components/Profile/Login'
 import Register from '../Components/Profile/Register'
-import Profiles from '../Components/Profile/Profiles'
 
-const Profile = () => {
+const LoginRegister = () => {
   return (
     <main>
-      <Profiles />
+      <Login />
     </main>
   )
 }
 
-export default Profile
+export default LoginRegister

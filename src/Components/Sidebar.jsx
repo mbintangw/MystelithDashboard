@@ -11,7 +11,12 @@ const Sidebar = () => {
       </div>
 
       <div>
-        <h1>Profile</h1>
+        <Link to="/profile">
+          <h1>profile</h1>
+        </Link>
+        <Link to="/login">
+          <h1>Login/Register</h1>
+        </Link>
       </div>
 
       <div className="flex flex-col gap-5 ">
