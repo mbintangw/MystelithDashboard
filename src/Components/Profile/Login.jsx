@@ -26,41 +26,44 @@ const Login = () => {
   };
   
   return (
-    <main className="flex justify-center items-center h-screen">
-      <form onSubmit={handleSubmit}>
-        <h3>Login</h3>
+    <main className="flex flex-col justify-center items-center h-screen gap-10">
+      <form onSubmit={handleSubmit} className="space-y-4 w-[300px] border border-black p-4 rounded-lg">
+        <h3 className="text-center uppercase font-bold text-2xl">Login</h3>
 
-        <div className="mb-3">
-          <label>Email address</label>
+        <div className="flex flex-col gap-2">
+          <h3>Email</h3>
           <input
             type="email"
-            className="form-control"
+            className="form-controll"
             placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
-        <div className="mb-3">
-          <label>Password</label>
+        <div className="flex flex-col gap-2">
+          <h3>Password</h3>
           <input
             type="password"
-            className="form-control"
+            className="form-controll"
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
-        <div className="">
-          <button type="submit" className="button-fill">
+        <div className="flex justify-center w-full">
+          <button type="submit" className="button-fill !w-full">
             Submit
           </button>
         </div>
-        <p className="text-right">
-          New user <a href="/register" className="text-blue-500">Register Here</a>
-        </p>
       </form>
+
+      <div className="border border-gray-400 p-5 rounded-lg">
+        <p className="text-right">
+            Don't have an account? <a href="/register" className="text-blue-500">Register Here</a>
+        </p>
+      </div>
     </main>
   )
 }

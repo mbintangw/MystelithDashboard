@@ -36,11 +36,11 @@ const Register = () => {
     }
   };
   return (
-    <main className="flex justify-center items-center h-screen">
-      <form onSubmit={handleRegister}>
-        <h3>Sign Up</h3>
+    <main className="flex flex-col justify-center items-center h-screen gap-10">
+      <form onSubmit={handleRegister} className="space-y-4 w-[300px] border border-black p-4 rounded-lg">
+        <h3 className="text-center uppercase font-bold text-2xl">Sign Up</h3>
 
-        <div className="mb-3">
+        <div className="flex flex-col gap-2">
           <label>First name</label>
           <input
             type="text"
@@ -51,7 +51,7 @@ const Register = () => {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="flex flex-col gap-2">
           <label>Last name</label>
           <input
             type="text"
@@ -61,7 +61,7 @@ const Register = () => {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="flex flex-col gap-2">
           <label>Email address</label>
           <input
             type="email"
@@ -72,7 +72,7 @@ const Register = () => {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="flex flex-col gap-2">
           <label>Password</label>
           <input
             type="password"
@@ -83,15 +83,19 @@ const Register = () => {
           />
         </div>
 
-        <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
+        <div className="flex justify-center w-full">
+          <button type="submit" className="button-fill !w-full">
             Sign Up
           </button>
         </div>
-        <p className="forgot-password text-right">
-          Already registered <a href="/login">Login</a>
-        </p>
       </form>
+
+      <div className="border border-gray-400 p-5 rounded-lg">
+        <p className="text-right">
+          Already registered? <a href="/login"  className="text-blue-500">Login</a>
+        </p>
+      </div>
+
     </main>
   );
 };

@@ -17,3 +17,7 @@ label {
 .button-outline {
   @apply bg-slate-500 text-white border-none p-2 rounded-xl flex items-center justify-center cursor-pointer
 }
+
+.form-control {
+  @apply border border-gray-400 p-2 rounded-lg
+}
