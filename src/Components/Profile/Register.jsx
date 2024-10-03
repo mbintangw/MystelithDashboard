@@ -3,18 +3,21 @@ import React, { useState } from "react";
 import { auth, db } from "../../../Firebaseconfig";
 import { setDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
+      navigate("/login");
       console.log(user);
       if (user) {
         await setDoc(doc(db, "Users", user.uid), {
@@ -26,17 +29,32 @@ const Register = () => {
       }
       console.log("User Registered Successfully!!");
       toast.success("User Registered Successfully!!", {
-        position: "top-center",
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
       });
     } catch (error) {
       console.log(error.message);
       toast.error(error.message, {
-        position: "bottom-center",
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
       });
     }
   };
   return (
     <main className="flex flex-col justify-center items-center h-screen gap-10">
+      <h1 className="text-3xl font-bold">Welcome To Mystelith Dashboard</h1>
       <form onSubmit={handleRegister} className="space-y-4 w-[300px] border border-black p-4 rounded-lg">
         <h3 className="text-center uppercase font-bold text-2xl">Sign Up</h3>
 

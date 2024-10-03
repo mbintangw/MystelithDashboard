@@ -2,31 +2,41 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from '../../../Firebaseconfig';
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log("User logged in Successfully");
-      window.location.href = "/profile";
+      navigate('/profile') ;
       toast.success("User logged in Successfully", {
-        position: "top-center",
+        position: "top-right",
       });
     } catch (error) {
       console.log(error.message);
-
       toast.error(error.message, {
-        position: "bottom-center",
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
       });
     }
   };
   
   return (
     <main className="flex flex-col justify-center items-center h-screen gap-10">
+      <h1 className="text-3xl font-bold">Welcome To Mystelith Dashboard</h1>
       <form onSubmit={handleSubmit} className="space-y-4 w-[300px] border border-black p-4 rounded-lg">
         <h3 className="text-center uppercase font-bold text-2xl">Login</h3>
 
@@ -34,7 +44,7 @@ const Login = () => {
           <h3>Email</h3>
           <input
             type="email"
-            className="form-controll"
+            className="form-control"
             placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -45,7 +55,7 @@ const Login = () => {
           <h3>Password</h3>
           <input
             type="password"
-            className="form-controll"
+            className="form-control"
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
