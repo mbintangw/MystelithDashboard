@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MainLayout from '../Layouts/MainLayout';  // Pastikan path sesuai dengan struktur projectmu
-import Dashboard from '../Pages/Dashboard';
 import Profile from '../Pages/Profile';
 import Settings from '../Pages/Settings';
 import ArticleFeed from '../Pages/ArticleFeed'; // Update with your actual ArticleFeeds component
@@ -20,14 +19,6 @@ function RouterApp() {
     <Router>
       <Routes>
         <Route 
-          path="/" 
-          element={
-            <MainLayout>
-              <Dashboard />
-            </MainLayout>
-          } 
-        />
-        <Route 
           path="/settings" 
           element={
             <MainLayout>
@@ -36,7 +27,7 @@ function RouterApp() {
           } 
         />
         <Route 
-          path="/article-feed" 
+          path="/" 
           element={
             <MainLayout>
               <ArticleFeed />

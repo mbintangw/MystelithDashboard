@@ -19,14 +19,8 @@ const Sidebar = () => {
         </Link>
       </div>
 
-      <div className="flex flex-col gap-5 ">
+      <div className="flex flex-col gap-5 ">       
           <Link to="/" className="flex items-center gap-2">
-            <MdOutlineDashboardCustomize />
-            Dashboard
-          </Link>
-        
-        
-          <Link to="/article-feed" className="flex items-center gap-2">
             <LuBookOpen />
             Article feed
           </Link>
