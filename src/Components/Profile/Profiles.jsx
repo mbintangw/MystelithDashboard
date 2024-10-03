@@ -1,36 +1,51 @@
 import React,  { useEffect, useState } from 'react'
 import { auth,db } from '../../../Firebaseconfig';
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { useUserAuth } from "../../Context/UserAuthContext";
+
 
 const Profiles = () => {
   const [userDetails, setUserDetails] = useState(null);
+  const { user, logOut } = useUserAuth();
+  const navigate = useNavigate();
+  
   const fetchUserData = async () => {
-    auth.onAuthStateChanged(async (user) => {
-      console.log(user);
-
+    try {
       const docRef = doc(db, "Users", user.uid);
       const docSnap = await getDoc(docRef);
+
       if (docSnap.exists()) {
         setUserDetails(docSnap.data());
-        console.log(docSnap.data());
       } else {
-        console.log("User is not logged in");
+        // Jika data tidak ada di Firestore, gunakan data dari Firebase Authentication
+        const userData = {
+          email: user.email,
+          photo: user.photoURL || 'defaultPhotoURL', // Gunakan placeholder jika tidak ada photo
+        };
+        setUserDetails(userData);
+
+        // Simpan data pengguna ke Firestore jika belum ada
+        await setDoc(docRef, userData);
       }
-    });
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
   };
   useEffect(() => {
     fetchUserData();
   }, []);
 
-  async function handleLogout() {
+  const handleLogout = async () => {
     try {
-      await auth.signOut();
-      window.location.href = "/login";
+      await logOut();
+      navigate ("/login") 
       console.log("User logged out successfully!");
     } catch (error) {
       console.error("Error logging out:", error.message);
     }
   }
+  
   return (
     <main className='flex justify-center items-center h-screen'>
       <div>
