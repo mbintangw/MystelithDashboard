@@ -21,3 +21,19 @@ label {
 .form-control {
   @apply border border-gray-400 p-2 rounded-lg
 }
+
+.title {
+  display : grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  width: 100%;
+
+}
+
+.title::before, .title::after {
+  content: "";
+  height: 2px;
+  background-color : #808080;
+  display: block;
+  width: 100%;
+}
